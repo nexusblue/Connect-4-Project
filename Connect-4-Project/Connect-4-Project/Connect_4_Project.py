@@ -1,12 +1,8 @@
 
 def printGrid(grid):
     print("\n------------------------------------")
-    print("     5-["+grid[0][5]+"]"+"["+grid[1][5]+"]"+"["+grid[2][5]+"]"+"["+grid[3][5]+"]"+"["+grid[4][5]+"]"+"["+grid[5][5]+"]"+"["+grid[6][5]+"]")
-    print("     4-["+grid[0][4]+"]"+"["+grid[1][4]+"]"+"["+grid[2][4]+"]"+"["+grid[3][4]+"]"+"["+grid[4][4]+"]"+"["+grid[5][4]+"]"+"["+grid[6][4]+"]")
-    print("     3-["+grid[0][3]+"]"+"["+grid[1][3]+"]"+"["+grid[2][3]+"]"+"["+grid[3][3]+"]"+"["+grid[4][3]+"]"+"["+grid[5][3]+"]"+"["+grid[6][3]+"]")
-    print("     2-["+grid[0][2]+"]"+"["+grid[1][2]+"]"+"["+grid[2][2]+"]"+"["+grid[3][2]+"]"+"["+grid[4][2]+"]"+"["+grid[5][2]+"]"+"["+grid[6][2]+"]")
-    print("     1-["+grid[0][1]+"]"+"["+grid[1][1]+"]"+"["+grid[2][1]+"]"+"["+grid[3][1]+"]"+"["+grid[4][1]+"]"+"["+grid[5][1]+"]"+"["+grid[6][1]+"]")
-    print("     0-["+grid[0][0]+"]"+"["+grid[1][0]+"]"+"["+grid[2][0]+"]"+"["+grid[3][0]+"]"+"["+grid[4][0]+"]"+"["+grid[5][0]+"]"+"["+grid[6][0]+"]")
+    for col in range(len(grid[0])-1,-1,-1):
+        print("   "+str(col)+"-["+grid[0][col]+"]"+"["+grid[1][col]+"]"+"["+grid[2][col]+"]"+"["+grid[3][col]+"]"+"["+grid[4][col]+"]"+"["+grid[5][col]+"]"+"["+grid[6][col]+"]")
     print("        A "+" B "+" C "+" D "+" E "+" F "+" G ")
     print("------------------------------------\n")
 
@@ -142,7 +138,7 @@ def StartGame():
               [" "," "," "," "," "," "],[" "," "," "," "," "," "], 
               [" "," "," "," "," "," "],[" "," "," "," "," "," "],[" "," "," "," "," "," "] )
     #horiLen(7)print(len(gGrid))
-    #vertLen(6)print(len(gGrid))
+    #vertLen(6)print(len(gGrid[0]))
     winGame = False
     turnNum = 1
     #main game loop that takes user input each turn
@@ -162,7 +158,6 @@ def StartGame():
             break
         if gameWon == True:
             break
-
     #restart game if answer is yes
     playAgain = str(input("Would you like to play again?"))
     if playAgain == "yes" or playAgain == "Yes":
@@ -170,31 +165,5 @@ def StartGame():
     
 def main():
     StartGame()
-   
             
 main()
-
-
-def Done(): 
-    print()
-    #elif gGrid[0][1] == gGrid[1][2] == gGrid[2][3] == gGrid[3][4] and gGrid[0][1] != " ":
-    #elif gGrid[1][2] == gGrid[2][3] == gGrid[3][4] == gGrid[4][5] and gGrid[1][2] != " ":
-    #elif gGrid[0][2] == gGrid[1][3] == gGrid[2][4] == gGrid[3][5] and gGrid[0][2] != " ":
-    #elif gGrid[3][1] == gGrid[2][2] == gGrid[1][3] == gGrid[0][4] and gGrid[3][1] != " ":
-    #elif gGrid[4][1] == gGrid[3][2] == gGrid[2][3] == gGrid[1][4] and gGrid[4][1] != " ":
-    #elif gGrid[5][1] == gGrid[4][2] == gGrid[3][3] == gGrid[2][4] and gGrid[5][1] != " ":
-    #elif gGrid[6][1] == gGrid[5][2] == gGrid[4][3] == gGrid[3][4] and gGrid[6][1] != " ":
-    #elif gGrid[2][1] == gGrid[3][2] == gGrid[4][3] == gGrid[5][4] and gGrid[2][1] != " ":
-    #elif gGrid[3][1] == gGrid[4][2] == gGrid[5][3] == gGrid[6][4] and gGrid[3][1] != " ":
-    #elif gGrid[0][0] == gGrid[1][1] == gGrid[2][2] == gGrid[3][3] and gGrid[0][0] != " ":
-    #elif gGrid[1][1] == gGrid[2][2] == gGrid[3][3] == gGrid[4][4] and gGrid[1][1] != " ":
-    #elif gGrid[2][2] == gGrid[3][3] == gGrid[4][4] == gGrid[5][5] and gGrid[2][2] != " ":
-    #elif gGrid[3][2] == gGrid[4][3] == gGrid[5][4] == gGrid[6][5] and gGrid[3][2] != " ":
-    #elif gGrid[3][0] == gGrid[2][1] == gGrid[1][2] == gGrid[0][3] and gGrid[3][0] != " ":
-    #elif gGrid[4][0] == gGrid[3][1] == gGrid[2][2] == gGrid[1][3] and gGrid[4][0] != " ":
-    #elif gGrid[5][0] == gGrid[4][1] == gGrid[3][2] == gGrid[2][3] and gGrid[5][0] != " ":
-    #elif gGrid[6][0] == gGrid[5][1] == gGrid[4][2] == gGrid[3][3] and gGrid[6][0] != " ":                                             
-    #elif gGrid[3][2] == gGrid[2][3] == gGrid[1][4] == gGrid[0][5] and gGrid[3][2] != " ":
-    #elif gGrid[4][2] == gGrid[3][3] == gGrid[2][4] == gGrid[1][5] and gGrid[4][2] != " ":
-    #elif gGrid[5][2] == gGrid[4][3] == gGrid[3][4] == gGrid[2][5] and gGrid[5][2] != " ":
-    #elif gGrid[6][2] == gGrid[5][3] == gGrid[4][4] == gGrid[3][5] and gGrid[6][2] != " ":
