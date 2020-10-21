@@ -1,9 +1,28 @@
+def ShowTitle():
+    print("\n---------------------------------------------------------")
+    print("=====  =====  ==  == ==   == ===== ===== ====== ===  ===")
+    print("||    |     | ||\ || ||\  || ||    ||      ||    |____|")
+    print("||    |     | || \|| || \ || ||    ||      ||         |")
+    print("=====  =====  ==  == ==  === ===== =====   ||         |")
+    print("---------------------------------------------------------\n")
+
+def ShowInstructions():
+    print("\nConnect 4 is a board game played between 2 players.")
+    print("In this game both players (Player X/O) take turns typing a letter from A-G.\n")
+
+    print("Each letter represents a column on the game.")
+    print("When a player declares a letter the bottom most ")
+    print("column will be filled out with that players symbol\n") 
+
+    print("The game board has 42 windows in a 6x7 grid and is empty when the game starts.")
+    print("The goal for both players is to make a line of four vertical, horizontal or diagonal.")
+    print("The winner is the first player to make a straight line made with their symbols.\n")
 
 def printGrid(grid):
     print("\n------------------------------------")
     for col in range(len(grid[0])-1,-1,-1):
         print("   "+str(col)+"-["+grid[0][col]+"]"+"["+grid[1][col]+"]"+"["+grid[2][col]+"]"+"["+grid[3][col]+"]"+"["+grid[4][col]+"]"+"["+grid[5][col]+"]"+"["+grid[6][col]+"]")
-    print("        A "+" B "+" C "+" D "+" E "+" F "+" G ")
+    print("      A "+" B "+" C "+" D "+" E "+" F "+" G ")
     print("------------------------------------\n")
 
 def updateBoard(gGrid,input,tPlayer):
@@ -121,13 +140,13 @@ def diaWin(gGrid):
 def checkWinCases(gGrid,player):
     #check for horizontal, vertical, and diagonal win case
     if horiWin(gGrid) == True:
-        print("Player "+player +" has won! Won by horizontal")
+        print("\nPlayer "+player +" has won! Won by horizontal line!\n")
         return True
     elif vertWin(gGrid) == True:
-        print("Player "+player +" has won! Won by vertical" )
+        print("\nPlayer "+player +" has won! Won by vertical line! \n" )
         return True
     elif diaWin(gGrid) == True:
-        print("Player "+player +" has won! Won by diagonal")
+        print("\nPlayer "+player +" has won! Won by diagonal line! \n")
         return True
     else:
         return False
@@ -159,11 +178,24 @@ def StartGame():
         if gameWon == True:
             break
     #restart game if answer is yes
-    playAgain = str(input("Would you like to play again?"))
+    playAgain = str(input("Would you like to play again: "))
     if playAgain == "yes" or playAgain == "Yes":
         StartGame()
     
 def main():
-    StartGame()
-            
+    #show title and options
+    ShowTitle()
+    print("           How to play: Press 1")
+    print("           Start Game : Press 2\n")
+    curInput = str(input("What would you like to do: "))
+    while curInput != "1" and curInput != "2" :
+        curInput = str(input("Please enter a valid input(1 or 2): "))
+    if curInput == "1":
+        ShowInstructions()
+        main()
+    elif curInput == "2":
+        StartGame()
+
+    print("\nThanks for playing!")
+
 main()
