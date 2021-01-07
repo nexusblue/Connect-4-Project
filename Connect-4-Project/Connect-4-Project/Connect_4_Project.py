@@ -183,7 +183,7 @@ def StartGame():
         if gameWon == True:
             break
     #restart game if answer is yes
-    playAgain = str(input("Would you like to play again: "))
+    playAgain = str(input("  Would you like to play again: "))
     if playAgain == "yes" or playAgain == "Yes":
         StartGame()
     
