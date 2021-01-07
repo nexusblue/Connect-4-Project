@@ -1,29 +1,35 @@
 def ShowTitle():
-    print("\n---------------------------------------------------------")
-    print("=====  =====  ==  == ==   == ===== ===== ====== ===  ===")
-    print("||    |     | ||\ || ||\  || ||    ||      ||    |____|")
-    print("||    |     | || \|| || \ || ||    ||      ||         |")
-    print("=====  =====  ==  == ==  === ===== =====   ||         |")
-    print("---------------------------------------------------------\n")
+    print("\n    -------------------------------------------------------------")
+    print("         =====  =====  ==  == ==   == ===== ===== ====== ===  ===")
+    print("         ||    |     | ||\ || ||\  || ||    ||      ||    |____|")
+    print("         ||    |     | || \|| || \ || ||    ||      ||         |")
+    print("         =====  =====  ==  == ==  === ===== =====   ||         |")
+    print("    -------------------------------------------------------------\n")
 
 def ShowInstructions():
-    print("\nConnect 4 is a board game played between 2 players.")
-    print("In this game both players (Player X/O) take turns typing a letter from A-G.\n")
-
-    print("Each letter represents a column on the game.")
-    print("When a player declares a letter the bottom most ")
-    print("column will be filled out with that players symbol\n") 
-
-    print("The game board has 42 windows in a 6x7 grid and is empty when the game starts.")
-    print("The goal for both players is to make a line of four vertical, horizontal or diagonal.")
-    print("The winner is the first player to make a straight line made with their symbols.\n")
+    print("\n         Description")
+    print("        -------------------------------------------------------------")
+    print("         Connect 4 is a board game played between 2 players (Player X/O).")
+    print("         In this game two players take turns typinga letter from A-G.\n")
+    print("         Layout")
+    print("        -------------------------------------------------------------")
+    print("         The game board is laid out in a 6x7 grid labled from A-G")
+    print("         Each letter represents a column on the game.")
+    print("         When a player declares a letter the bottom most ")
+    print("         column will be filled out with that players symbol\n") 
+    print("         How to play")
+    print("        -------------------------------------------------------------")
+    print("         The goal of the game is to make a line of four with no break.")
+    print("         This can be done vertical, horizontal or diagonal.")
+    print("         The first player to make a line of four made wins.\n")
+    print("        -------------------------------------------------------------")
 
 def printGrid(grid):
-    print("\n------------------------------------")
+    print("\n             ------------------------------------")
     for col in range(len(grid[0])-1,-1,-1):
-        print("   "+str(col)+"-["+grid[0][col]+"]"+"["+grid[1][col]+"]"+"["+grid[2][col]+"]"+"["+grid[3][col]+"]"+"["+grid[4][col]+"]"+"["+grid[5][col]+"]"+"["+grid[6][col]+"]")
-    print("      A "+" B "+" C "+" D "+" E "+" F "+" G ")
-    print("------------------------------------\n")
+        print("                   "+str(col)+"-["+grid[0][col]+"]"+"["+grid[1][col]+"]"+"["+grid[2][col]+"]"+"["+grid[3][col]+"]"+"["+grid[4][col]+"]"+"["+grid[5][col]+"]"+"["+grid[6][col]+"]")
+    print("                      A "+" B "+" C "+" D "+" E "+" F "+" G ")
+    print("             ------------------------------------\n")
 
 def updateBoard(gGrid,input,tPlayer):
     #replace empty space with player symbol
@@ -73,26 +79,25 @@ def updateBoard(gGrid,input,tPlayer):
 
 def checkFullList(gGrid,tPlayer):
     vBorder = len(gGrid[0])
-    print("\nIt is player "+tPlayer+" turn")
     gChoices = ["a","b","c","d","e","f","g","A","B","C","D","E","F","G"]
-    pInput = str(input("Please input a letter player "+tPlayer+": "))
+    pInput = str(input("\n  Player "+tPlayer+"'s turn. Please input a letter: "))
     while pInput not in gChoices:
-        pInput = str(input("Error:Player "+ tPlayer+" enter a letter between A-G: "))
+        pInput = str(input("\n  Error:Player "+ tPlayer+" enter a letter between A-G: "))
 
     while pInput == "a" and gGrid[0][vBorder-1 ]!= " ":
-        pInput = str(input("\nError:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
+        pInput = str(input("\n  Error:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
     while pInput == "b" and gGrid[1][vBorder-1 ]!= " ":
-        pInput = str(input("\nError:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
+        pInput = str(input("\n  Error:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
     while pInput == "c" and gGrid[2][vBorder-1 ]!= " ":
-        pInput = str(input("\nError:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
+        pInput = str(input("\n  Error:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
     while pInput == "d" and gGrid[3][vBorder-1 ]!= " ":
-        pInput = str(input("\nError:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
+        pInput = str(input("\n  Error:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
     while pInput == "e" and gGrid[4][vBorder-1 ]!= " ":
-        pInput = str(input("\nError:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
+        pInput = str(input("\n  Error:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
     while pInput == "f" and gGrid[5][vBorder-1 ]!= " ":
-        pInput = str(input("\nError:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
+        pInput = str(input("\n  Error:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
     while pInput == "g" and gGrid[6][vBorder-1 ]!= " ":
-        pInput = str(input("\nError:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
+        pInput = str(input("\n  Error:"+ pInput.capitalize()+" list full.\nEnter new letter player "+tPlayer+": "))
     return pInput
 
 def horiWin(gGrid):
@@ -140,13 +145,13 @@ def diaWin(gGrid):
 def checkWinCases(gGrid,player):
     #check for horizontal, vertical, and diagonal win case
     if horiWin(gGrid) == True:
-        print("\nPlayer "+player +" has won! Won by horizontal line!\n")
+        print("\n  Player "+player +" has won! Won by horizontal line!\n")
         return True
     elif vertWin(gGrid) == True:
-        print("\nPlayer "+player +" has won! Won by vertical line! \n" )
+        print("\n  Player "+player +" has won! Won by vertical line! \n" )
         return True
     elif diaWin(gGrid) == True:
-        print("\nPlayer "+player +" has won! Won by diagonal line! \n")
+        print("\n  Player "+player +" has won! Won by diagonal line! \n")
         return True
     else:
         return False
@@ -185,17 +190,16 @@ def StartGame():
 def main():
     #show title and options
     ShowTitle()
-    print("           How to play: Press 1")
-    print("           Start Game : Press 2\n")
-    curInput = str(input("What would you like to do: "))
+    print("                    How to play: Press 1")
+    print("                    Start Game : Press 2\n")
+    curInput = str(input("              What would you like to do: "))
     while curInput != "1" and curInput != "2" :
-        curInput = str(input("Please enter a valid input(1 or 2): "))
+        curInput = str(input("              Please enter a valid input(1 or 2): "))
     if curInput == "1":
         ShowInstructions()
         main()
     elif curInput == "2":
         StartGame()
-
-    print("\nThanks for playing!")
+    print("\n       Thanks for playing!")
 
 main()
